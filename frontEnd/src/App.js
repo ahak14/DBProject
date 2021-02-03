@@ -4,7 +4,11 @@ import { useHistory } from 'react-router-dom';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'semantic-ui-css/semantic.min.css';
+import { ThemeProvider, StylesProvider } from '@material-ui/styles';
+import { CssBaseline } from '@material-ui/core';
 import { initRedirect } from './redux/actions/redirect';
+import RTLMuiTheme from './theme/RTLMuiTheme';
+import jss from './utils/jssRTL';
 import Root from './root/Root';
 
 const Toast = () => (
@@ -31,10 +35,13 @@ const App = ({ redirectTo, initRedirect }) => {
   }, [redirectTo, initRedirect, history]);
 
   return (
-    <>
-      <Root />
-      <Toast />
-    </>
+    <ThemeProvider theme={RTLMuiTheme}>
+      <StylesProvider jss={jss}>
+        <CssBaseline />
+        <Root />
+        <Toast />
+      </StylesProvider>
+    </ThemeProvider>
   );
 };
 

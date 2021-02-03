@@ -1,5 +1,6 @@
 import jMoment from 'jalali-moment';
 import moment from 'moment';
+
 import getLocale from './getLocale';
 import translateNumber from './translateNumber';
 
@@ -13,12 +14,12 @@ const defaultType = {
   en: dateTypes.GREGORIAN,
 };
 
-export const dateFormater = ({
+export default function dateFormatter({
   date = Date.now(),
   lang = getLocale(),
   type = defaultType[lang],
   format = 'YYYY/MM/DD',
-}) => {
+}) {
   let enResult;
   switch (type) {
     case dateTypes.JALALI:
@@ -29,4 +30,4 @@ export const dateFormater = ({
       enResult = moment(date).format(format);
   }
   return translateNumber({ lang, num: enResult });
-};
+}

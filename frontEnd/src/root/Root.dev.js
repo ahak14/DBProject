@@ -11,6 +11,7 @@ import Problem from '../containers/Problem';
 import ProblemSet from '../containers/ProblemSet';
 import NavBar from '../components/NavBar/NavBar';
 import NavBarItems from '../components/NavBar/NavBarItems';
+import Answer from '../containers/Answer';
 
 import '../styles/App.css';
 import PrivateRoute from './PrivateRoute';
@@ -29,6 +30,7 @@ const Root = ({ isLoggedIn, username, logout }) => {
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegistrationPage} />
+          <PrivateRoute path="/answer/:id?" component={Answer} />
           <PrivateRoute path="/problem/:id" component={ViewProblem} />
           <PrivateRoute path="/makeProblem/" component={Problem} />
           <PrivateRoute path="/editProblem/:id" component={Problem} />
