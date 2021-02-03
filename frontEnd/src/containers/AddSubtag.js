@@ -16,10 +16,15 @@ import Editor from '../components/editor/tiny_editor/react_tiny/TinyEditorCompon
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    direction: 'ltr'
+    direction: 'ltr',
   },
   background: {
     minHeight: `calc(100vh - 5em)`,
+  },
+  title: {
+    fontSize: 40,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   paper: {
     padding: theme.spacing(2),
@@ -27,10 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Answer = () => {
+const Subtag = () => {
   const classes = useStyles();
-  const answerEl = useRef(null);
-  const teachBoxEl = useRef(null);
 
   return (
     <div className={classes.root}>
@@ -42,10 +45,10 @@ const Answer = () => {
           justify='center'
           alignItems='stretch'
           direction='column'
-          spacing={2}>
+          spacing={6}>
           <Grid item>
-            <Typography gutterBottom variant='h1' align='center'>
-              افزودن پاسخ
+            <Typography gutterBottom variant='h3' className={classes.title} align='center'>
+              افزودن ساب‌تگ
             </Typography>
           </Grid>
           <Grid item >
@@ -56,29 +59,7 @@ const Answer = () => {
                 justify='center'
                 spacing={2}>
                 <Grid item>
-                  <Typography gutterBottom >
-                    متن پاسخ:
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Editor
-                    ref={answerEl}
-                    id="answerElement"
-                    initContent='پاسخ مسئله را این‌جا بنویسید!' />
-                </Grid>
-                <Grid item>
-                  <Typography gutterBottom >
-                    جعبه‌ی تدریس:
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <TextField label='هدف سوال' variant='outlined' gutterBottom fullWidth style={{ direction: 'rtl' }} />
-                </Grid>
-                <Grid item>
-                  <Editor
-                    ref={teachBoxEl}
-                    id="teachBoxElement"
-                    initContent='نکات مرتبط با نحوه‌ی تدریس این مسئله را این‌جا بنویسید!' />
+                  <TextField label='عنوان' variant='outlined' gutterBottom fullWidth />
                 </Grid>
                 <Grid container item alignItems='center' justify='center' spacing={2}>
                   <Grid item>
@@ -91,9 +72,9 @@ const Answer = () => {
                         id: 'filled-age-native-simple',
                       }}
                     >
-                      <option value={10}>سوال اول</option>
-                      <option value={20}>سوال دوم</option>
-                      <option value={30}>سوال سوم</option>
+                      <option value={10}>تگ اول</option>
+                      <option value={20}>تگ دوم</option>
+                      <option value={30}>تگ سوم</option>
                     </Select>
                   </Grid>
                   <Grid item>
@@ -120,4 +101,4 @@ export default connect(
   {
 
   }
-)(Answer);
+)(Subtag);
