@@ -1,5 +1,6 @@
 .idea/vcs.xml
 .idea/workspace.xml
-backEnd/package-lock.json
+/backEnd/package-lock.json
 /backEnd/node_modules/
-
+/frontEnd/package-lock.json
+/frontEnd/node_modules/
